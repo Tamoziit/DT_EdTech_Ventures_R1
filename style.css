@@ -930,3 +930,35 @@
     font-size: 14px;
     line-height: 19.07px;
 }
+
+
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1024px) {
+    .navbar .logo {
+        margin-left: 39px;
+    }
+
+    .navbar .groups {
+        margin-right: 39px;
+    }
+
+    #container .header .submit {
+        transform: translateX(60px);
+    }
+
+    #container .descContainer {
+        width: 63%;
+    }
+
+    #container .footer {
+        top: 2640px;
+    }
+
+    #container #assets {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 30px;
+        left: 200px;
+    }
+}
