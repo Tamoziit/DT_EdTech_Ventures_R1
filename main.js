@@ -7,6 +7,7 @@ renderAssets();
 asset1Render();
 asset2Render();
 asset3Render();
+asset4Render();
 
 function getDesc() {
     fetch("data.json")
@@ -170,6 +171,53 @@ function asset3Render() {
                 </div>
             `
             Array.prototype.forEach.call(asset3, (assetItem) => {
+                assetItem.appendChild(assetDetails.cloneNode(true));
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+function asset4Render() {
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            const assets = data.tasks[0].assets[3];
+            const asset4 = document.getElementsByClassName(`${assets.asset_id}`);
+            const assetDetails = document.createElement("div");
+            assetDetails.classList.add("assetDetails");
+            assetDetails.innerHTML = `
+                <div class="intro">
+                    <div class="introHead">
+                        <button><img src="assets/Vector (2).png" alt="dropdown"></button>
+                        <span>Introduction</span>
+                    </div>
+                    <div class="introBody">
+                        <p>The 4SA Method , How to bring a idea into progress ?</p>
+                        <span class="seeMore">See More</span>
+                    </div>
+                </div>
+
+                <div class="thread">
+                    <div class="threadHead">
+                        <button><img src="assets/Vector (2).png" alt="dropdown"></button>
+                        <span>Thread A</span>
+                    </div>
+                    <div class="threadBody">
+                        <p>How are you going to develop your stratergy ? Which method are you going to use to develop a stratergy ? What if the project is lengthy?</p>
+                        <span class="seeMore">See More</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="exampleTab">
+                        <span>Example 1</span>
+                    </div>
+                    <p>You have a concept , How will you put into progress?</p>
+                </div>
+            `
+            Array.prototype.forEach.call(asset4, (assetItem) => {
                 assetItem.appendChild(assetDetails.cloneNode(true));
             });
         })
