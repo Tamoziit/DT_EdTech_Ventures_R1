@@ -1,5 +1,9 @@
 const container = document.getElementById("container");
 const assets = document.getElementById("assets");
+const sidebar = document.getElementsByClassName("sidebar");
+const btn = document.getElementsByClassName("sideMenu");
+const sidebar1 = document.querySelector(".sidebar1");
+const sidebar2 = document.querySelector(".sidebar2");
 
 //Func. calls
 getDesc();
@@ -8,6 +12,7 @@ asset1Render();
 asset2Render();
 asset3Render();
 asset4Render();
+journeyBoard();
 
 function getDesc() {
     fetch("data.json")
@@ -224,4 +229,23 @@ function asset4Render() {
         .catch(error => {
             console.log(error);
         })
+}
+
+let sidebarActive = false;
+function journeyBoard() {
+    Array.prototype.forEach.call(btn, (button) => {
+        button.addEventListener("click", () => {
+            if (sidebarActive) {
+                // If sidebar2 (active state) is currently visible, switch to sidebar1 (inactive state)
+                sidebar2.style.display = "none";
+                sidebar1.style.display = "block";
+                sidebarActive = false;
+            } else {
+                // If sidebar1 (inactive state) is currently visible, switch to sidebar2 (active state)
+                sidebar1.style.display = "none";
+                sidebar2.style.display = "block";
+                sidebarActive = true;
+            }
+        });
+    });
 }
